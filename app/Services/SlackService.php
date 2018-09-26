@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 class SlackService
 {
     protected $client;
+    protected $token;
 
     /**
      * Create a new controller instance.
@@ -24,12 +25,9 @@ class SlackService
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded; application/json']            
         ];
 
-        $res = $this->client->request('POST', "channels.create",$payload);
-        return $res;
-
-        // echo $res->getStatusCode();
-        // echo $res->getHeaderLine('content-type');
-        // echo $res->getBody();
+        $resposne = $this->client->request('POST', "channels.create",$payload);
+       
+        return json_decode($resposne->getBody());
      }  
 
      public function channelsList(){

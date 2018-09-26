@@ -41,6 +41,10 @@ class HomeController extends Controller
             'channel' => 'required',
         ]);
         $response = $service->channelsCreate($validatedData['channel']);
+         return redirect()->back()->with([
+            'status' => $response->ok == true?'Channel created Successfully!':'Error while creating channel!',
+             'log' => json_encode($response)
+            ]);
     }
 
     /**
