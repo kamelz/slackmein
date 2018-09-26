@@ -3,6 +3,10 @@
 
 ## Installation
 
+- `git clone https://github.com/kamelz/slackmein.git`
+
+- `cd slackmein`
+
 - `composer install`
 
 - `cp .env.example .env`
