@@ -18,6 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('/channel', 'HomeController@create')->name('slack.channel');
-Route::post('/invite', 'HomeController@invite')->name('slack.invite');
+Route::post('/invite/channel', 'HomeController@inviteToChannel')->name('slack.invite.channel');
+Route::post('/invite/email', 'HomeController@inviteByEmail')->name('slack.invite.email');

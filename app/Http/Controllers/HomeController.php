@@ -52,7 +52,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function invite(Request $request,SlackService $service)
+    public function inviteToChannel(Request $request,SlackService $service)
     {
         $validatedData = $request->validate([
             'channel' => 'required',
@@ -60,6 +60,27 @@ class HomeController extends Controller
         ]);
 
         $response = $service->channelsInvite($validatedData['user'],$validatedData['channel']);
+        return redirect()->back()->with([
+            'status' => $response->ok == true?'Invitation sent!':'Invitation failed!',
+            'log' => json_encode($response)
+            ]);
+    }
+
+    /**
+     * Invite a slack member by email.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function inviteByEmail(Request $request,SlackService $service)
+    {
+        $validatedData = $request->validate([
+            'email' => 'required|email'
+        ]);
+        $response = $service->inviteByEmail($validatedData['email']);
+        return redirect()->back()->with([
+            'status' => $response->ok == true?'Invitation sent!':'Invitation failed!',
+            'log' => json_encode($response)
+            ]);
     }
 
 }

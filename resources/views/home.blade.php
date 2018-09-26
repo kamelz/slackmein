@@ -2,6 +2,34 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Invite by email</div>
+            <div class="card-body">
+                <form method="POST" action="{{route('slack.invite.email')}}">
+                    @csrf
+                    <div class="form-group row">
+                        
+                        <div class="col-md-6">
+                            <input placeholder='email' id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                            @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                        {{ __('Invite') }}
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Create Channel</div>
