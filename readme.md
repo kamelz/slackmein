@@ -1,7 +1,7 @@
-#Slackmein
+# Slackmein
 - A slack API integeration web application.
 
-##Installation
+## Installation
 
 - `composer install`
 
@@ -11,7 +11,7 @@
 
 - `php artisan serve`
 
-##Features
+## Features
 -  Create channel
 - Send invitation to a channel
 - send invitation to the workspace by email
