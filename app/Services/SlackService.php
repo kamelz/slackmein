@@ -42,11 +42,12 @@ class SlackService
         return json_decode($resposne->getBody());
      }
 
+     public function channelsList(){
         $payload = [ 
             'query' => ['token' => env('SLACK_WEB_TOCKEN')],
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded']            
         ];
-        $resposne = $this->client->request('GET','conversations.list',$payload);
+        $resposne = $this->client->request('GET','channels.list',$payload);
     
         return json_decode($resposne->getBody());
      }
