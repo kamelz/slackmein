@@ -30,7 +30,17 @@ class SlackService
         return json_decode($resposne->getBody());
      }  
 
-     public function channelsList(){
+     public function testToken(){
+        $payload = [ 
+            'query' => [
+                'token' => env('SLACK_WEB_TOCKEN'),
+            ],
+            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded; application/json;']        
+        ];
+        $resposne = $this->client->request('POST','auth.test',$payload);
+        echo $resposne->getBody();
+        return json_decode($resposne->getBody());
+     }
 
         $payload = [ 
             'query' => ['token' => env('SLACK_WEB_TOCKEN')],
